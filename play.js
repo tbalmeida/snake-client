@@ -1,22 +1,8 @@
 const net = require('net');
 
-let vSrv = process.argv[2] === undefined? "localhost" : process.argv[2];
+const vSrv = process.argv[2] !== undefined ? process.argv[2] : "localhost"; 
 
-console.log("Server: " + vSrv);
+const connect = require('./client');
 
-/**
- * Establishes connection with the game server
- */
-const connect = function() {
-  const conn = net.createConnection({ 
-    host: vSrv,
-    port: 50541
-  });
-  // interpret incoming data as text
-  conn.setEncoding('utf8'); 
-
-  return conn;
-}
-
-console.log('Connecting ...');
-connect();
+console.log(`Server: ${vSrv}`);
+connect( vSrv );
