@@ -10,10 +10,12 @@ const connect = function( pSrv) {
   });
   conn.setEncoding('utf8'); 
 
+  conn.on('connect', () => {
+    console.log('Im connected');
+    conn.write('Name: TBA');
+  })
+
   return conn;
 }
-
-console.log("Connecting to..." );
-connect();
 
 module.exports = connect;
